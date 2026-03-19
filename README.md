@@ -1,1 +1,1 @@
-# Ak-ll-not-defteri-app
+Akıllı Not Defteri Uygulaması
