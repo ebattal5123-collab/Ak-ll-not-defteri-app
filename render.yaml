@@ -2,22 +2,35 @@ services:
   - type: web
     name: akilli-not-defteri
     runtime: python
-    repo: https://github.com/ebattal5123-collab/Ak-ll-not-defteri-app  # Kendi repo adresinizle değiştirin
+    repo: https://github.com/kullaniciadi/akilli-not-defteri
     plan: free
-    region: frankfurt  # veya singapore, ohio, oregon, frankfurt
+    region: frankfurt
     branch: main
-    buildCommand: pip install -r requirements.txt
+    buildCommand: |
+      echo "Python sürümü kontrol ediliyor..."
+      python --version
+      pip install --upgrade pip
+      pip install wheel
+      pip install -r requirements.txt
     startCommand: gunicorn main:app
     envVars:
       - key: PYTHON_VERSION
         value: 3.11.9
       - key: SECRET_KEY
-        generateValue: true  # Rastgele secret key oluşturur
+        generateValue: true
       - key: DB_URL
-        sync: postgresql://neondb_owner:npg_gX26oRxjOkub@ep-falling-butterfly-ad60np1i-pooler.c-2.us-east-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require  # Elle girilecek (Neon DB bağlantısı)
+        sync: false
       - key: FLASK_ENV
         value: production
       - key: FLASK_DEBUG
         value: 0
+      - key: RENDER
+        value: true
     healthCheckPath: /
     autoDeploy: true
+    buildFilter:
+      paths:
+      - main.py
+      - requirements.txt
+      - runtime.txt
+      - render.yaml
