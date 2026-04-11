@@ -2,7 +2,7 @@ services:
   - type: web
     name: akilli-not-defteri
     runtime: python
-    repo: https://github.com/kullaniciadi/akilli-not-defteri  # Kendi repo adresinizle değiştirin
+    repo: https://github.com/ebattal5123-collab/Ak-ll-not-defteri-app  # Kendi repo adresinizle değiştirin
     plan: free
     region: frankfurt  # veya singapore, ohio, oregon, frankfurt
     branch: main
