@@ -11,10 +11,10 @@ services:
     envVars:
       - key: PYTHON_VERSION
         value: 3.11.0
-      - key: gizli-anahtar-2026
+      - key: SECRET_KEY
         generateValue: true  # Rastgele secret key oluşturur
-      - key: postgresql://neondb_owner:npg_gX26oRxjOkub@ep-falling-butterfly-ad60np1i-pooler.c-2.us-east-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require
-        sync: false  # Elle girilecek (Neon DB bağlantısı)
+      - key: DB_URL
+        sync: postgresql://neondb_owner:npg_gX26oRxjOkub@ep-falling-butterfly-ad60np1i-pooler.c-2.us-east-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require  # Elle girilecek (Neon DB bağlantısı)
       - key: FLASK_ENV
         value: production
       - key: FLASK_DEBUG
